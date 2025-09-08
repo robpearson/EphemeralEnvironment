@@ -1,0 +1,37 @@
+variable "B2B.Cluster.Namespace" {
+    value "b2b-payments-#{Octopus.Environment.Name | ToLower}" {}
+}
+
+variable "B2B.WebApp.HttpPort" {
+    value "8081" {
+        environment = ["internal"]
+    }
+
+    value "8082" {
+        description = ""
+        environment = ["main"]
+    }
+
+    value "8080" {
+        description = ""
+        environment = ["main"]
+    }
+}
+
+variable "B2B.WebApp.HttpsPort" {
+    value "8091" {
+        environment = ["internal"]
+    }
+
+    value "8092" {
+        environment = ["canary"]
+    }
+
+    value "8093" {
+        environment = ["main"]
+    }
+}
+
+variable "B2B.WebApp.ServiceName" {
+    value "b2b-processor" {}
+}

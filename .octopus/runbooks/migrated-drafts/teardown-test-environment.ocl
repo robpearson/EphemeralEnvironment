@@ -1,0 +1,31 @@
+name = "Teardown test environment"
+default_guided_failure_mode = "EnvironmentDefault"
+description = ""
+
+connectivity_policy {
+    allow_deployments_to_no_targets = true
+}
+
+run_retention_policy {
+    quantity_to_keep = 100
+}
+
+process {
+    step "delete-namespace" {
+        name = "Delete namespace"
+        properties = {
+            Octopus.Action.TargetRoles = "platform-k8s"
+        }
+
+        action {
+            action_type = "Octopus.KubernetesRunScript"
+            properties = {
+                Octopus.Action.Script.ScriptBody = "kubectl delete namespace $OctopusParameters[\"B2B.Cluster.Namespace\"]"
+                Octopus.Action.Script.ScriptSource = "Inline"
+                Octopus.Action.Script.Syntax = "PowerShell"
+            }
+            worker_pool = "hosted-windows"
+            worker_pool_variable = ""
+        }
+    }
+}
