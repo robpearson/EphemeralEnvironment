@@ -41,7 +41,7 @@ jobs:
       - name: Create Octopus Release
         uses: OctopusDeploy/create-release-action@v3
         with: 
-          space: 'Mecari PoC'
+          space: 'Mercari PoC'
           project: 'B2B Payment Processor'
           channel: 'Pull Requests'
           release_number: ${{ env.PACKAGE_VERSION }}
@@ -51,7 +51,7 @@ jobs:
       - name: Deploy a release in Octopus Deploy 🐙
         uses: OctopusDeploy/deploy-release-tenanted-action@v3
         with:
-          space: 'Mecari PoC'
+          space: 'Mercari PoC'
           project: 'B2B Payment Processor'
           release_number: ${{env.PACKAGE_VERSION}}
           environment: 'Internal'
