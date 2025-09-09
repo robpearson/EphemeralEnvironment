@@ -46,10 +46,4 @@ jobs:
           release_number: ${{ env.PACKAGE_VERSION }}
           release_notes: 'GitHub Commits URL: ${{ github.event.pull_request.commits_url }}'
           git_ref: ${{ (github.ref_type == 'tag' && github.event.repository.default_branch ) || (github.head_ref || github.ref) }}
-  
-      - name: Deploy a release in Octopus Deploy 🐙
-        uses: OctopusDeploy/deploy-release-tenanted-action@v3
-        with:
-          project: 'B2B Payment Processor'
-          release_number: ${{env.PACKAGE_VERSION}}
-          environment: 'Internal'
+
