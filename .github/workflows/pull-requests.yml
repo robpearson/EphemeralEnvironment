@@ -41,7 +41,7 @@ jobs:
       - name: Create Octopus Release
         uses: OctopusDeploy/create-release-action@v3
         with: 
-          space: 'Mercari PoC'
+          space: ${{secrets.OCTOPUS_SPACE}}
           project: 'B2B Payment Processor'
           channel: 'Pull Requests'
           release_number: ${{ env.PACKAGE_VERSION }}
